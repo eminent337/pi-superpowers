@@ -20,6 +20,16 @@ Or add to `.pi/settings.json` (project-level) or `~/.pi/agent/settings.json` (gl
 }
 ```
 
+## Optional: Subagent Tool
+
+Several skills can dispatch work to subagents (marked with 🤖 below). **pi-superpowers does not include a subagent tool.** These skills still work as process guides without one — you just run tasks manually instead of dispatching them.
+
+To enable automated dispatch, install a subagent extension:
+
+- **pi's example subagent extension** — Ships with pi at `examples/extensions/subagent/`. See [its README](https://github.com/badlogic/pi-mono/tree/main/packages/coding-agent/examples/extensions/subagent) for installation via symlinks into `~/.pi/agent/extensions/subagent/`.
+- **Any compatible subagent extension** — Any extension that provides a `subagent` tool works.
+- **Manual alternative** — Run `pi -p "prompt"` in another terminal, or use tmux panes for parallel tasks.
+
 ## What's Inside
 
 ### Skills
@@ -29,16 +39,16 @@ Or add to `.pi/settings.json` (project-level) or `~/.pi/agent/settings.json` (gl
 | **brainstorming** | Socratic design refinement — questions, alternatives, incremental validation | `/skill:brainstorming` |
 | **writing-plans** | Detailed implementation plans with bite-sized TDD tasks | `/skill:writing-plans` |
 | **executing-plans** | Batch execution with checkpoints for architect review | `/skill:executing-plans` |
-| **subagent-driven-development** | Fresh subagent per task with two-stage review | `/skill:subagent-driven-development` |
+| 🤖 **subagent-driven-development** | Fresh subagent per task with two-stage review | `/skill:subagent-driven-development` |
 | **test-driven-development** | RED-GREEN-REFACTOR cycle (includes anti-patterns reference) | `/skill:test-driven-development` |
 | **systematic-debugging** | 4-phase root cause investigation | `/skill:systematic-debugging` |
 | **verification-before-completion** | Evidence before claims, always | `/skill:verification-before-completion` |
-| **requesting-code-review** | Pre-merge review with severity categories | `/skill:requesting-code-review` |
+| 🤖 **requesting-code-review** | Pre-merge review with severity categories | `/skill:requesting-code-review` |
 | **receiving-code-review** | Technical evaluation of review feedback | `/skill:receiving-code-review` |
-| **dispatching-parallel-agents** | Concurrent subagent workflows | `/skill:dispatching-parallel-agents` |
+| 🤖 **dispatching-parallel-agents** | Concurrent subagent workflows | `/skill:dispatching-parallel-agents` |
 | **using-git-worktrees** | Isolated development branches | `/skill:using-git-worktrees` |
 | **finishing-a-development-branch** | Merge/PR decision workflow | `/skill:finishing-a-development-branch` |
-| **writing-skills** | TDD applied to process documentation — create, test, and bulletproof skills | `/skill:writing-skills` |
+| 🤖 **writing-skills** | TDD applied to process documentation — create, test, and bulletproof skills | `/skill:writing-skills` |
 
 ### Plan Tracker
 
@@ -67,14 +77,6 @@ plan_tracker({ action: "clear" })
 7. **Finish** — `/skill:finishing-a-development-branch` merges or creates a PR
 
 Each skill cross-references related skills so the agent knows what to use next.
-
-## Subagent Dispatch
-
-Several skills reference subagent dispatch (subagent-driven-development, requesting-code-review, dispatching-parallel-agents, writing-skills). **pi-superpowers does not include a subagent tool** — you'll need one of these:
-
-- **pi's example subagent extension** — Ships with pi at `examples/extensions/subagent/`. See [its README](https://github.com/badlogic/pi-mono/tree/main/packages/coding-agent/examples/extensions/subagent) for installation via symlinks into `~/.pi/agent/extensions/subagent/`.
-- **Any compatible subagent extension** — Any extension that provides a `subagent` tool works.
-- **Manual dispatch** — Run `pi -p "prompt"` in another terminal, or use tmux panes for parallel tasks. The skills still work as process guides — the subagent tool just automates the dispatch.
 
 ## Development
 
