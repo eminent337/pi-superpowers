@@ -38,6 +38,7 @@ Or add to `.pi/settings.json` (project-level) or `~/.pi/agent/settings.json` (gl
 | **dispatching-parallel-agents** | Concurrent subagent workflows | `/skill:dispatching-parallel-agents` |
 | **using-git-worktrees** | Isolated development branches | `/skill:using-git-worktrees` |
 | **finishing-a-development-branch** | Merge/PR decision workflow | `/skill:finishing-a-development-branch` |
+| **writing-skills** | TDD applied to process documentation — create, test, and bulletproof skills | `/skill:writing-skills` |
 
 ### Plan Tracker
 
@@ -69,10 +70,11 @@ Each skill cross-references related skills so the agent knows what to use next.
 
 ## Subagent Dispatch
 
-Skills that reference subagent dispatch (subagent-driven-development, requesting-code-review, dispatching-parallel-agents) work with any dispatch mechanism:
+Several skills reference subagent dispatch (subagent-driven-development, requesting-code-review, dispatching-parallel-agents, writing-skills). **pi-superpowers does not include a subagent tool** — you'll need one of these:
 
-- **With pi-superteam:** The agent uses the `team` tool automatically
-- **Without pi-superteam:** Run `pi -p "prompt"` in another terminal, or use tmux panes for parallel tasks
+- **pi's example subagent extension** — Ships with pi at `examples/extensions/subagent/`. See [its README](https://github.com/badlogic/pi-mono/tree/main/packages/coding-agent/examples/extensions/subagent) for installation via symlinks into `~/.pi/agent/extensions/subagent/`.
+- **Any compatible subagent extension** — Any extension that provides a `subagent` tool works.
+- **Manual dispatch** — Run `pi -p "prompt"` in another terminal, or use tmux panes for parallel tasks. The skills still work as process guides — the subagent tool just automates the dispatch.
 
 ## Development
 
