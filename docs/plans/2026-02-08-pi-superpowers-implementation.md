@@ -449,8 +449,8 @@ Apply these changes:
    Add a "**How to dispatch**" block after the "Prompt Templates" section:
    ```markdown
    **How to dispatch:**
-   - If a dispatch tool is available (e.g. pi-superteam's `team` tool), use it
-   - Otherwise, run a second pi instance: `pi -p "prompt from template"`
+   - If a dispatch tool is available (e.g. aery-superteam's `team` tool), use it
+   - Otherwise, run a second aery instance: `aery -p "prompt from template"`
    - For parallel tasks, use multiple terminal panes (one per task)
    ```
 
@@ -492,8 +492,8 @@ Apply these changes:
 1. In the "Dispatch in Parallel" section, replace the Claude Code `Task(...)` example with generic pi dispatch:
    ```markdown
    **How to dispatch:**
-   - If a dispatch tool is available (e.g. pi-superteam's `team` tool), use it
-   - Otherwise, run a second pi instance per task: `pi -p "prompt"`
+   - If a dispatch tool is available (e.g. aery-superteam's `team` tool), use it
+   - Otherwise, run a second aery instance per task: `aery -p "prompt"`
    - For parallel tasks, use multiple terminal panes (one per task)
    ```
 
@@ -536,8 +536,8 @@ Apply these changes:
 2. Add "How to dispatch" block:
    ```markdown
    **How to dispatch:**
-   - If a dispatch tool is available (e.g. pi-superteam's `team` tool), use it
-   - Otherwise, run a second pi instance: `pi -p "prompt from template"`
+   - If a dispatch tool is available (e.g. aery-superteam's `team` tool), use it
+   - Otherwise, run a second aery instance: `aery -p "prompt from template"`
    ```
 
 3. Replace integration section skill references:
@@ -622,7 +622,7 @@ Copy from upstream. Apply:
 Copy from upstream. Apply:
 
 1. Replace `CLAUDE.md` references:
-   - `Check CLAUDE.md` → `Check project configuration (README.md, .pi/settings.json, AGENTS.md)`
+   - `Check CLAUDE.md` → `Check project configuration (README.md, .aery/settings.json, AGENTS.md)`
    - `CLAUDE.md preference` → `project configuration preference`
    - `If preference specified` context remains the same.
 
@@ -657,7 +657,7 @@ Create the plan-tracker extension: one tool with four actions (`init`, `update`,
 
 **Step 1: Write the extension**
 
-> **Design doc divergence (intentional):** The design doc mentions `pi.appendEntry("plan_tracker", ...)` for state storage. This plan uses `toolResult.details` instead — state is stored in tool result details and reconstructed by walking the branch. This is the preferred approach per pi's extension docs ("State Management" section) because it handles session branching correctly (each branch sees only its own tool results). The API role literal is confirmed as `"toolResult"` (camelCase) from `@mariozechner/pi-ai` types.
+> **Design doc divergence (intentional):** The design doc mentions `aery.appendEntry("plan_tracker", ...)` for state storage. This plan uses `toolResult.details` instead — state is stored in tool result details and reconstructed by walking the branch. This is the preferred approach per pi's extension docs ("State Management" section) because it handles session branching correctly (each branch sees only its own tool results). The API role literal is confirmed as `"toolResult"` (camelCase) from `@mariozechner/pi-ai` types.
 
 ```typescript
 /**
@@ -755,7 +755,7 @@ function formatStatus(tasks: Task[]): string {
   return lines.join("\n");
 }
 
-export default function (pi: ExtensionAPI) {
+export default function (aery: ExtensionAPI) {
   let tasks: Task[] = [];
 
   const reconstructState = (ctx: ExtensionContext) => {
@@ -789,13 +789,13 @@ export default function (pi: ExtensionAPI) {
     "session_fork",
     "session_tree",
   ] as const) {
-    pi.on(event, async (_event, ctx) => {
+    aery.on(event, async (_event, ctx) => {
       reconstructState(ctx);
       updateWidget(ctx);
     });
   }
 
-  pi.registerTool({
+  aery.registerTool({
     name: "plan_tracker",
     label: "Plan Tracker",
     description:
@@ -1028,7 +1028,7 @@ Brainstorming → Planning → TDD → Debugging → Code Review → Finishing �
 pi install git:github.com/coctostan/pi-superpowers
 ```
 
-Or add to `.pi/settings.json` (project-level) or `~/.pi/agent/settings.json` (global):
+Or add to `.aery/settings.json` (project-level) or `~/.pi/agent/settings.json` (global):
 
 ```json
 {
@@ -1087,8 +1087,8 @@ Each skill cross-references related skills so the agent knows what to use next.
 
 Skills that reference subagent dispatch (subagent-driven-development, requesting-code-review, dispatching-parallel-agents) work with any dispatch mechanism:
 
-- **With pi-superteam:** The agent uses the `team` tool automatically
-- **Without pi-superteam:** Run `pi -p "prompt"` in another terminal, or use tmux panes for parallel tasks
+- **With aery-superteam:** The agent uses the `team` tool automatically
+- **Without aery-superteam:** Run `aery -p "prompt"` in another terminal, or use tmux panes for parallel tasks
 
 ## Attribution
 

@@ -12,7 +12,7 @@ Brainstorming → Planning → TDD → Debugging → Code Review → Finishing �
 pi install git:github.com/coctostan/pi-superpowers
 ```
 
-Or add to `.pi/settings.json` (project-level) or `~/.pi/agent/settings.json` (global):
+Or add to `.aery/settings.json` (project-level) or `~/.pi/agent/settings.json` (global):
 
 ```json
 {
@@ -28,7 +28,7 @@ To enable automated dispatch, install a subagent extension:
 
 - **pi's example subagent extension** — Ships with pi at `examples/extensions/subagent/`. See [its README](https://github.com/badlogic/pi-mono/tree/main/packages/coding-agent/examples/extensions/subagent) for installation via symlinks into `~/.pi/agent/extensions/subagent/`.
 - **Any compatible subagent extension** — Any extension that provides a `subagent` tool works.
-- **Manual alternative** — Run `pi -p "prompt"` in another terminal, or use tmux panes for parallel tasks.
+- **Manual alternative** — Run `aery -p "prompt"` in another terminal, or use tmux panes for parallel tasks.
 
 ## What's Inside
 

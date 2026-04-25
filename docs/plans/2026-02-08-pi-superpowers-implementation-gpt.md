@@ -24,7 +24,7 @@ The main issues are a few internal contradictions ("copy unchanged" but then edi
    - Recommendation: add `touch extensions/.gitkeep skills/.gitkeep` (or drop committing empty dirs until they contain files).
 
 4. **Design/plan mismatch on extension state strategy (decide explicitly)**
-   - Design doc says state via `pi.appendEntry("plan_tracker", ...)`.
+   - Design doc says state via `aery.appendEntry("plan_tracker", ...)`.
    - Implementation plan stores state in **toolResult.details** and reconstructs by walking the branch.
    - This plan approach is actually consistent with pi’s own extension docs (“State Management” section), and usually branches better.
    - Recommendation: update the design doc (or add a note in Task 14) so this doesn’t look like an accidental divergence.
@@ -52,7 +52,7 @@ The main issues are a few internal contradictions ("copy unchanged" but then edi
 
 - **Skill set and directory layout** matches the design’s Package Structure section.
 - **Cross-reference strategy** (Related Skills blockquotes, `/skill:name` syntax) matches design intent.
-- **No pi-superteam dependency** is preserved; “How to dispatch” guidance degrades gracefully.
+- **No aery-superteam dependency** is preserved; “How to dispatch” guidance degrades gracefully.
 - **Final verification sweeps** (grep for Claude-specific tokens + frontmatter validation) are strong and concrete.
 
 ## Small improvements (optional)

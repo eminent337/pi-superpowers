@@ -30,7 +30,7 @@ ls -d worktrees 2>/dev/null      # Alternative
 ### 2. Check Project Configuration
 
 ```bash
-grep -i "worktree.*director" README.md .pi/settings.json AGENTS.md 2>/dev/null
+grep -i "worktree.*director" README.md .aery/settings.json AGENTS.md 2>/dev/null
 ```
 
 **If preference specified:** Use it without asking.

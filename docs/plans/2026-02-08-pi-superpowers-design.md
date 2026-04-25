@@ -1,6 +1,6 @@
 # pi-superpowers Design
 
-Lightweight adaptation of [obra/superpowers](https://github.com/obra/superpowers) as a standalone pi package. Skills + one small extension. No dependency on pi-superteam.
+Lightweight adaptation of [obra/superpowers](https://github.com/obra/superpowers) as a standalone pi package. Skills + one small extension. No dependency on aery-superteam.
 
 ## Background
 
@@ -11,13 +11,13 @@ Pi's native skill system handles discovery, system prompt injection, and `/skill
 ## Goals
 
 - Faithful port of superpowers skill content to pi
-- Self-contained package — works without pi-superteam
+- Self-contained package — works without aery-superteam
 - Lighter than the original — no bootstrap injection, no command wrappers, no JS skill resolver
 - One extension providing a plan tracker tool with TUI widget
 
 ## Non-Goals
 
-- Automated subagent dispatch (that's pi-superteam's domain)
+- Automated subagent dispatch (that's aery-superteam's domain)
 - Upstream tracking / fork synchronization
 - Reproducing the `using-superpowers` bootstrap hook
 
@@ -83,7 +83,7 @@ pi-superpowers/
 | `lib/skills-core.js` | Pi handles skill discovery natively |
 | `.claude-plugin/` | Claude Code plugin metadata |
 | `.opencode/`, `.codex/` | Other platform adapters |
-| `agents/code-reviewer.md` | Agent dispatch is a pi-superteam concept; the prompt template at `requesting-code-review/code-reviewer.md` remains |
+| `agents/code-reviewer.md` | Agent dispatch is a aery-superteam concept; the prompt template at `requesting-code-review/code-reviewer.md` remains |
 | `tests/` | Claude Code test harness, not portable |
 
 ### package.json
@@ -126,7 +126,7 @@ Every skill gets these search-and-replace transformations:
 | `superpowers:skill-name` | `skill-name` | No namespace prefix in pi |
 | `Skill` tool / `Invoke Skill tool` | `/skill:name` or `read` tool | Pi's native mechanisms |
 | `TodoWrite` / `Create TodoWrite` | `plan_tracker` tool | Extension provides this |
-| `CLAUDE.md` | Project config (`.pi/settings.json`, `README.md`) | Pi equivalent |
+| `CLAUDE.md` | Project config (`.aery/settings.json`, `README.md`) | Pi equivalent |
 | `Task tool` / `Task tool (general-purpose)` | "dispatch a subagent" (generic) | No assumption about team tool |
 | `superpowers:code-reviewer` agent type | Reference to `code-reviewer.md` prompt template | Prompt template, not agent |
 
@@ -159,21 +159,21 @@ Specific cross-references per skill:
 | finishing-a-development-branch | → verification-before-completion (tests pass?), requesting-code-review |
 | using-git-worktrees | → (none — infrastructure skill) |
 
-### Subagent dispatch without pi-superteam
+### Subagent dispatch without aery-superteam
 
 Skills referencing subagent dispatch (`subagent-driven-development`, `requesting-code-review`, `dispatching-parallel-agents`) use generic language:
 
 - Keep prompt templates (`implementer-prompt.md`, etc.) unchanged — they're agent-agnostic reference docs
 - Replace `Task tool` references with: "dispatch a subagent with the following prompt"
 - The model can use whatever dispatch mechanism is available, or the user can run it manually
-- If pi-superteam is installed, the model will naturally use the `team` tool
+- If aery-superteam is installed, the model will naturally use the `team` tool
 
 Each skill that references subagent dispatch includes a **Dispatch options** recipe block:
 
 ```markdown
 **How to dispatch:**
-- If a dispatch tool is available (e.g. pi-superteam's `team` tool), use it
-- Otherwise, run a second pi instance: `pi -p "prompt from template"`
+- If a dispatch tool is available (e.g. aery-superteam's `team` tool), use it
+- Otherwise, run a second aery instance: `aery -p "prompt from template"`
 - For parallel tasks, use multiple terminal panes (one per task)
 ```
 
@@ -218,7 +218,7 @@ plan_tracker({ action: "clear" })
 
 ### State management
 
-- Stored via `pi.appendEntry("plan_tracker", { tasks, updated })` — persists in session, survives restarts, works with branching/forking
+- Stored via `aery.appendEntry("plan_tracker", { tasks, updated })` — persists in session, survives restarts, works with branching/forking
 - Restored on `session_start`, `session_switch`, `session_fork`, and `session_tree` by walking `ctx.sessionManager.getBranch()` for the latest `plan_tracker` entry
 - No file I/O, no tracking file to manage
 
@@ -239,7 +239,7 @@ Tasks: ✓✓→○○ (2/5)  Task 3: Recovery modes
 
 - No enforcement — doesn't block the model from skipping tasks
 - No plan file parsing — model extracts tasks and calls `init`
-- No integration with `team` tool — that's pi-superteam's domain
+- No integration with `team` tool — that's aery-superteam's domain
 - No file output — state lives in session only
 
 ### Cost advantage

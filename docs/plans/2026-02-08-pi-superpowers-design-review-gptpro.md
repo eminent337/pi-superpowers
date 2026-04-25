@@ -50,7 +50,7 @@ One tool, three actions, session persistence, and a tiny status widget is square
 ### ⚠️ Biggest risk: API surface assumptions
 Your design assumes things like:
 
-- `pi.appendEntry("plan_tracker", …)`
+- `aery.appendEntry("plan_tracker", …)`
 - restoring via `ctx.sessionManager.getBranch()`
 - widget via `ctx.ui.setWidget()`
 
@@ -94,7 +94,7 @@ The skills will be read by:
 #### Suggested fix: add a tiny “How to dispatch here” recipe block
 In each skill that mentions subagents (`dispatching-parallel-agents`, `subagent-driven-development`, `requesting-code-review`), add a short “Dispatch options” section:
 
-- **If you have pi-superteam**: use it (team tool)
+- **If you have aery-superteam**: use it (team tool)
 - **If you don’t**: run a second Pi instance in another terminal (or tmux pane) with the prompt template content
 - **If you want parallelism**: tmux layout with N panes (one per task)
 
@@ -149,10 +149,10 @@ Change the transform to something like:
 This keeps the skills portable across agents, and avoids nudging models toward filesystem browsing.
 
 ### `CLAUDE.md` mapping: consider `AGENTS.md`
-You map `CLAUDE.md` → `.pi/settings.json` / `README.md`. Another semantic match in the Pi ecosystem is **`AGENTS.md`** as hierarchical project context.
+You map `CLAUDE.md` → `.aery/settings.json` / `README.md`. Another semantic match in the Pi ecosystem is **`AGENTS.md`** as hierarchical project context.
 
 Suggested transform guidance:
-- `CLAUDE.md` → `AGENTS.md` (agent context) and optionally `.pi/settings.json` (actual settings)
+- `CLAUDE.md` → `AGENTS.md` (agent context) and optionally `.aery/settings.json` (actual settings)
 
 ### Packaging: looks aligned ✅
 Your `package.json` `pi` field matches how Pi package resolution works (“declare extensions and skills in package.json”), and `pi-package` is a known keyword convention.

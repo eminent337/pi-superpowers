@@ -26,7 +26,7 @@ Using `using-superpowers` skill to ensure I check for relevant skills and follow
   - If you want a tiny upgrade without bloat: allow `update` by either `index` *or* `id` (string).
 
 ## 3) State management + lifecycle correctness
-- The proposed `pi.appendEntry("plan_tracker", ...)` approach is valid (custom entries don’t enter LLM context).
+- The proposed `aery.appendEntry("plan_tracker", ...)` approach is valid (custom entries don’t enter LLM context).
 - However, to keep the widget correct across session operations, the extension likely needs to also refresh on:
   - `session_switch`, `session_fork`, and `session_tree` (not just `session_start`).
 - Alternative (also valid): store state in the `plan_tracker` toolResult `details` and reconstruct by scanning tool results on the current branch. (Pi docs recommend this pattern for branching correctness.)
@@ -34,7 +34,7 @@ Using `using-superpowers` skill to ensure I check for relevant skills and follow
 ## 4) Subagent dispatch gap
 - “Dispatch a subagent with the following prompt” is a reasonable degrade path, but it can still confuse users.
 - Suggest adding a one-paragraph note in each dispatch-referencing skill:
-  - If an automated dispatch mechanism exists (e.g. pi-superteam), use it.
+  - If an automated dispatch mechanism exists (e.g. aery-superteam), use it.
   - Otherwise, instruct the user to run another agent manually with the provided prompt template.
 
 ## 5) Cross-reference coverage

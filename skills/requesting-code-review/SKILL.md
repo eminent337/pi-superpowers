@@ -36,8 +36,8 @@ HEAD_SHA=$(git rev-parse HEAD)
 Fill the template at `code-reviewer.md` in this skill directory, then dispatch a subagent with it.
 
 **How to dispatch:**
-- If a dispatch tool is available (e.g. pi-superteam's `team` tool), use it
-- Otherwise, run a second pi instance: `pi -p "prompt from template"`
+- If a dispatch tool is available (e.g. aery-superteam's `team` tool), use it
+- Otherwise, run a second aery instance: `aery -p "prompt from template"`
 
 **Placeholders:**
 - `{WHAT_WAS_IMPLEMENTED}` - What you just built

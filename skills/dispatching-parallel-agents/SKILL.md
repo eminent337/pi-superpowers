@@ -64,8 +64,8 @@ Each agent gets:
 ### 3. Dispatch in Parallel
 
 **How to dispatch:**
-- If a dispatch tool is available (e.g. pi-superteam's `team` tool), use it
-- Otherwise, run a second pi instance per task: `pi -p "prompt"`
+- If a dispatch tool is available (e.g. aery-superteam's `team` tool), use it
+- Otherwise, run a second aery instance per task: `aery -p "prompt"`
 - For parallel tasks, use multiple terminal panes (one per task)
 
 ```
@@ -143,7 +143,7 @@ Return: Summary of what you found and what you fixed.
 
 **Decision:** Independent domains - abort logic separate from batch completion separate from race conditions
 
-**Dispatch:** (via dispatch tool, or one `pi -p` per terminal pane)
+**Dispatch:** (via dispatch tool, or one `aery -p` per terminal pane)
 ```
 Agent 1 → Fix agent-tool-abort.test.ts
 Agent 2 → Fix batch-completion-behavior.test.ts

@@ -91,8 +91,8 @@ digraph process {
 - `./code-quality-reviewer-prompt.md` - Dispatch code quality reviewer subagent
 
 **How to dispatch:**
-- If a dispatch tool is available (e.g. pi-superteam's `team` tool), use it
-- Otherwise, run a second pi instance: `pi -p "prompt from template"`
+- If a dispatch tool is available (e.g. aery-superteam's `team` tool), use it
+- Otherwise, run a second aery instance: `aery -p "prompt from template"`
 - For parallel tasks, use multiple terminal panes (one per task)
 
 ## Example Workflow

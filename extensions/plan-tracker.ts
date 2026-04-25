@@ -69,7 +69,7 @@ function renderWidgetText(tasks: Task[], theme: Theme): string {
   return `${theme.fg("muted", "Tasks:")} ${icons} ${theme.fg("muted", `(${data.complete}/${data.total})`)}${currentName}`;
 }
 
-export default function (pi: ExtensionAPI) {
+export default function (aery: ExtensionAPI) {
   let tasks: Task[] = [];
 
   const reconstructState = (ctx: ExtensionContext) => {
@@ -94,13 +94,13 @@ export default function (pi: ExtensionAPI) {
     "session_fork",
     "session_tree",
   ] as const) {
-    pi.on(event, async (_event, ctx) => {
+    aery.on(event, async (_event, ctx) => {
       reconstructState(ctx);
       updateWidget(ctx);
     });
   }
 
-  pi.registerTool({
+  aery.registerTool({
     name: "plan_tracker",
     label: "Plan Tracker",
     description:

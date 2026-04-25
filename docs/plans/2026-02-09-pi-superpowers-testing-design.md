@@ -110,7 +110,7 @@ export function formatWidgetText(tasks: Task[]): { icons: string; complete: numb
 export function reconstructFromBranch(entries: BranchEntry[]): Task[] { ... }
 ```
 
-`plan-tracker.ts` becomes thin wiring that imports these and connects them to `pi.registerTool()`, event handlers, and widget rendering.
+`plan-tracker.ts` becomes thin wiring that imports these and connects them to `aery.registerTool()`, event handlers, and widget rendering.
 
 ### Test Cases
 

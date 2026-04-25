@@ -11,7 +11,7 @@ Superpowers provides structured workflow skills for coding agents — brainstorm
 1. **Adapting the skills** — replacing Claude-specific tool references (`Skill` tool, `TodoWrite`, `CLAUDE.md`, `Task` tool) with pi equivalents or generic language
 2. **Dropping the bootstrap hook** — Claude Code needs a 3.8KB injection every session to force skill usage; pi's native skill system makes this unnecessary; we replace it with lightweight cross-references in each skill
 3. **Adding a plan tracker** — small extension with one tool + TUI widget to replace `TodoWrite` for tracking plan progress, using pi's session state instead of file I/O
-4. **Keeping it standalone** — works without pi-superteam (a separate, larger project by the same author that provides automated subagent dispatch)
+4. **Keeping it standalone** — works without aery-superteam (a separate, larger project by the same author that provides automated subagent dispatch)
 
 ## What to look for
 
