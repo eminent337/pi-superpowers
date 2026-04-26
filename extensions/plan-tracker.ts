@@ -8,9 +8,9 @@
  * Pure logic lives in plan-tracker-core.ts for testability.
  */
 
-import { StringEnum } from "@mariozechner/pi-ai";
-import type { ExtensionAPI, ExtensionContext, Theme } from "@mariozechner/pi-coding-agent";
-import { Text } from "@mariozechner/pi-tui";
+import { StringEnum } from "@eminent337/aery-ai";
+import type { ExtensionAPI, ExtensionContext, Theme } from "@eminent337/aery";
+import { Text } from "@eminent337/aery-tui";
 import { Type, type Static } from "@sinclair/typebox";
 import {
   type Task,
